@@ -60,7 +60,7 @@ var saveTasks = function () {
 }
 
 // function to edit tasks
-$(".description").on("click", function() {
+$(".time-block").on("click",".description", function ()  {
 
     var text = $(this).text().trim();
 
@@ -91,16 +91,16 @@ $(".time-block").on("blur","textarea", function () {
 
     $(this).replaceWith(taskEl);
 
-    loadTasks();
-
 })
 
 // saves tasks in local storage when save button is clicked
-$(".saveBtn").on("click", function() {
+$(".time-block").on("click",".saveBtn", function () {
 
     console.log("tasks saved!")
 
-    saveTasks();
+    saveTasks(); 
+
+    loadTasks();
 
 })
 
