@@ -39,12 +39,12 @@ var loadTasks = function () {
         }
         else if ($(this).attr("id") < currentHour) {
 
-            $(this).addClass("future")
+            $(this).addClass("past")
 
         } 
         else if ($(this).attr("id") > currentHour) {
 
-            $(this).addClass("past")
+            $(this).addClass("future")
 
         }
     
