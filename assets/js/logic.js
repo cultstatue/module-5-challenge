@@ -1,5 +1,10 @@
 var tasks = {};
 
+var currentHour = moment().hour();
+var currentDate = moment().format('MMMM d, YYYY');
+
+$("#currentDay").text(currentDate);
+
 // function to load tasks
 var loadTasks = function () {
 
@@ -27,9 +32,23 @@ var loadTasks = function () {
     $('.description').each(function() {
 
         $(this).text(tasks[$(this).attr("id")]);
+
+        if ($(this).attr("id") === currentHour) {
+
+            $(this).addClass("present")
+        }
+        else if ($(this).attr("id") < currentHour) {
+
+            $(this).addClass("future")
+
+        } 
+        else if ($(this).attr("id") > currentHour) {
+
+            $(this).addClass("past")
+
+        }
     
     })
-
 
 }
 
