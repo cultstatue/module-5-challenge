@@ -1,7 +1,39 @@
 var tasks = {};
 
-// function to save tasks
+// function to load tasks
+var loadTasks = function () {
 
+    tasks = JSON.parse(localStorage.getItem("tasks"));
+
+    if (!tasks) {
+
+        tasks = {
+
+            9: " ",
+            10: " ",
+            11: " ",
+            12: " ",
+            13: " ",
+            14: " ",
+            15: " ",
+            16: " ",
+            17: " "
+
+        };
+
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    $('.description').each(function() {
+
+        $(this).text(tasks[$(this).attr("id")]);
+    
+    })
+
+
+}
+
+// function to save tasks
 var saveTasks = function () {
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -22,6 +54,7 @@ $(".description").on("click", function() {
 
 });
 
+// saves tasks when clicking off of task
 $(".time-block").on("blur","textarea", function () {
 
     var text = $(this).val().trim();
@@ -41,10 +74,13 @@ $(".time-block").on("blur","textarea", function () {
 
 })
 
+// saves tasks in local storage when save button is clicked
 $(".saveBtn").on("click", function() {
 
     console.log("tasks saved!")
 
     saveTasks();
-    
+
 })
+
+loadTasks();
