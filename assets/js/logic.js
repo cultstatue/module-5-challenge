@@ -91,6 +91,8 @@ $(".time-block").on("blur","textarea", function () {
 
     $(this).replaceWith(taskEl);
 
+    loadTasks();
+
 })
 
 // saves tasks in local storage when save button is clicked
